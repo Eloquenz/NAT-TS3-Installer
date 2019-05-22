@@ -71,7 +71,7 @@ fi
 echo "-------------------------------------------------------"
 echo "Detecting latest TeamSpeak 3 version, please wait..."
 echo "-------------------------------------------------------"
-wget 'http://dl.4players.de/ts/releases/?C=M;O=D' -q -O - | grep -i dir | grep -Eo '<a href=\".*\/\">.*\/<\/a>' | grep -Eo '[0-9\.?]+' | uniq | sort -V -r > TS3V
+wget 'https://files.teamspeak-services.com/releases/server/3.7.1/teamspeak3-server_linux_amd64-3.7.1.tar.bz2/?C=M;O=D' -q -O - | grep -i dir | grep -Eo '<a href=\".*\/\">.*\/<\/a>' | grep -Eo '[0-9\.?]+' | uniq | sort -V -r > TS3V
 while read ts3version; do
   if [[ "${ts3version}" =~ ^[3-9]+\.[0-9]+\.1[2-9]+\.?[0-9]*$ ]]; then
     wget --spider -q https://files.teamspeak-services.com/releases/server/3.7.1/teamspeak3-server_linux_amd64-3.7.1.tar.bz2
@@ -96,7 +96,7 @@ apt-get update
 apt-get install -y sudo telnet bzip2
 
 # Create non-privileged user for TS3 server, and moves home directory under /etc
-adduser --disabled-login --gecos "ts3server" ts3
+adduser --disabled-login --gecos "teamspeakserver" teamspeak
 
 # Extract the contents and give correct ownership to the files and folders
 echo "------------------------------------------------------"
